@@ -1,73 +1,81 @@
 <template>
-
-   <nav class="w-full">
-      <div class="h-28 bg-slate-50 shadow-sm fixed w-full left-0 top-0 z-50">
-           <div class="container h-full relative mx-auto flex flex-row items-center  justify-between">
-              <div class="items-center mx-auto flex-shrink-0">
-               <router-link :to="'/'" class="flex items-center">
-                  <img src="../assets/EMUNI transparent logo.png" class="w-20 h-20" alt="">
-               </router-link>
-
-              </div>
-             
-              <div class="flex flex-col justify-between absolute left-0 top-28 bg-slate-50 w-full">
-                  <div class="flex-1 mx-auto flex flex-col gap-6  items-start py-4 ml-6">
-                     <router-link
-                     v-for="link in home_links"
-                     :key="link.title"
-                     v-bind:to="{name: link.name}"
-                     class="relative text-xl px-4 bg-transparent text-gray-800 hover:text-green-600 flex flex-row items-start
-                     focus:outline-none focus:shadow-outline 
-                     after:bg-transparent
-                     after:h-0.5 after:w-4 after:hover:bg-green-600 after:content-[''] after:inline-flex after:absolute after:-bottom-2 after:rounded-sm after:left-[40%]  after:hover:left-[25%] after:hover:w-[50%] after:transition-all"
-                     >
-                           {{ link.title }}
-                        </router-link>
-                  </div>
-
-
-                  <div class="flex-1 pb-4 px-8">
-                     <router-link
-                        class="px-4 py-3 text-sm text-center hover:bg-emerald-800 hover:text-white w-full flex items-start  border-2 border-black bg-white rounded-md hover:px-5 font-medium"
-                        :to="'/login'"
-                     >
-                        Portal Login
-                     </router-link>
-                  </div>
-            </div>
-           </div>
+  <nav class="w-full fixed top-0 left-0 h-28  flex items-center bg-slate-50 z-50">
+    <div class="container mx-auto flex gap-24 justify-between items-center px-3">
+      <div>
+        <router-link :to="'/'">
+          <img src="../assets/EMUNI transparent logo.png" class="w-20 h-20" alt="">
+        </router-link>
       </div>
-   </nav>
-    
-   <div class="mt-28 w-screen">
-       <router-view></router-view>
-   </div>
+      <div class="lg:hidden">
+        <button
+            @click="menuOpen = !menuOpen"
+            class="p-2 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               class="h-8 w-8">
+            >
+            <line x1="4" x2="20" y1="12" y2="12"/>
+            <line x1="4" x2="20" y1="6" y2="6"/>
+            <line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div
+          :class="[menuOpen ? 'hidden lg:flex' : 'block lg:flex']"
+          class="items-center pb-4 lg:pb-0 px-3 lg:px-0 flex-1 bg-slate-50 absolute lg:relative top-28 left-0 lg:top-0  w-full shadow lg:shadow-none">
+        <ul class="flex flex-col lg:flex-row py-6 lg:py-0 flex-1 items-center gap-6">
+          <li
+              v-for="link in home_links"
+              :key="link.title"
+              class="flex flex-col relative items-center justify-center"
+          >
+            <router-link
+                :to="{name: link.name}"
+                class="
+                      after:bg-transparent
+                     after:h-0.5 after:w-4 after:hover:bg-green-600 after:mx-auto after:content-[''] after:flex after:relative after:-bottom-2 after:rounded-sm after:hover:w-[50%] after:transition-all"
+            >
+              {{ link.title }}
+            </router-link>
+          </li>
 
+        </ul>
+        <div class="">
+          <router-link
+              class="flex justify-center px-4 py-3 text-sm text-center hover:bg-emerald-800 hover:text-white w-full items-start  border-2 border-black bg-white rounded-md hover:px-5 font-medium"
+              :to="'/login'"
+          >
+            Portal Login
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
 import {ref} from 'vue';
 
-export default{
-   setup(){
+export default {
+  setup() {
 
-      const showUnderline = ref(null)
+    const menuOpen = ref(false)
 
-       const home_links = ref([
-         // {title: "Home", name: "home"},
-         {title: "About Emuni", name: "about-emuni"},
-         {title: "Academics", name: "academic-overview"},
-         {title: "Admissions", name: "admissions-overview"},
-         {title: "Campus Life", name: "campus-life"},
-         {title: "News & Events", name: "news-events"},
-         {title: "Directory", name: "directory"}
+    const home_links = ref([
+      // {title: "Home", name: "home"},
+      {title: "About Emuni", name: "about-emuni"},
+      {title: "Academics", name: "academic-overview"},
+      {title: "Admissions", name: "admissions-overview"},
+      {title: "Campus Life", name: "campus-life"},
+      {title: "News & Events", name: "news-events"},
+      {title: "Directory", name: "directory"}
 
-       ]);
-      return {
-         home_links, showUnderline
-
-      }
-   }
+    ]);
+    return {
+      home_links,
+      menuOpen
+    }
+  }
 }
 
 </script>

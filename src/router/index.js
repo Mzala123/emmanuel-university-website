@@ -12,7 +12,6 @@ import HomeView  from '../views/HomeView.vue'
 const routes = [
     {
         path:'/',
-        name:NavHome,
         component: NavHome,
          children:[
           {
