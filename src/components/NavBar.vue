@@ -21,7 +21,7 @@
         </button>
       </div>
       <div
-          :class="[menuOpen ? 'hidden lg:flex' : 'block lg:flex']"
+          :class="[menuOpen ? 'block lg:flex' : 'hidden lg:flex']"
           class="items-center pb-4 lg:pb-0 px-3 lg:px-0 flex-1 bg-slate-50 absolute lg:relative top-28 left-0 lg:top-0  w-full shadow lg:shadow-none">
         <ul class="flex flex-col lg:flex-row py-6 lg:py-0 flex-1 items-center gap-6">
           <li
@@ -31,6 +31,7 @@
           >
             <router-link
                 :to="{name: link.name}"
+                active-class="text-emerald-500"
                 class="
                       after:bg-transparent
                      after:h-0.5 after:w-4 after:hover:bg-green-600 after:mx-auto after:content-[''] after:flex after:relative after:-bottom-2 after:rounded-sm after:hover:w-[50%] after:transition-all"
