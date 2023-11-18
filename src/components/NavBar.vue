@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full fixed top-0 left-0 h-28  flex items-center bg-slate-50 z-50">
+  <!-- <nav class="w-full fixed top-0 left-0 h-28  flex items-center bg-slate-50 z-50">
     <div class="container mx-auto flex gap-24 justify-between items-center px-3">
       <div>
         <router-link :to="'/'">
@@ -38,7 +38,10 @@
               {{ link.title }}
             </router-link>
           </li>
-
+    
+   <div class="mt-28 w-screen">
+       <router-view></router-view>
+   </div>
         </ul>
         <div class="">
           <router-link
@@ -50,7 +53,7 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
 </template>
 
 <script>
